@@ -354,6 +354,75 @@ function checkThreeIntDiffering1And3(...arg) {
 console.log(checkThreeIntDiffering1And3(5,9,9));
 
 // 42. На зустріч один одному відповідно з міста А та міста Б рухається заєць та черепаха. Ввести з клавіатури відстань між містами, швидкість зайця та швидкість черепахи. Обчислити на якій відстані від міста Б вони зустрінуться.
+console.log('--------------------------\n№42:');
+
+function distanceFromTheCityTurtle(dist, speedRabbit, speedTurtle){
+  return dist * speedTurtle / (speedRabbit + speedTurtle);
+}
+console.log(distanceFromTheCityTurtle(10,9,3));
+
+// 43. З міста А в місто Б їде велосипедист. З його плеча злітає муха. Вона летить до міста Б, долітає до нього та повертається назад. Знову долітає до велосипедиста, розвертається і летить до міста Б... і так до тих пір, поки велосипедист не доїде до пункту Б. Відомо відстань між містами, швидкість велосипедиста та швидкість мухи. Написати програму, що визначає скільки кілометрів налітає муха.
+console.log('--------------------------\n№43:');
+
+function distanceFly(distance, speesBicyclist, speedFly) {
+  if(speesBicyclist >= speedFly) return distance * speedFly / speesBicyclist;
+  let newDistance = distance * (speedFly - speesBicyclist) / (speedFly + speesBicyclist);
+  if (newDistance <= 1e-14) {
+    return 0
+  } else {
+    return distance + newDistance + distanceFly(newDistance, speesBicyclist, speedFly);
+  }
+}
+const start = Date.now();
+console.log(distanceFly(100,2.5,10));
+console.log(distanceFly(100,10,2.5));
+console.log(distanceFly(100,10,10));
+console.log(distanceFly(100,0.03,10));
+console.log(Date.now());
+console.log(start);
+console.log(Date.now() - start);
+
+// 44. Написати програму, яка визначає дату наступного дня, на основі сьогоднішньої дати.
+console.log('--------------------------\n№44:');
+
+function nextDayDate() {
+  const date = new Date;
+  date.setDate(date.getDate() + 1);
+  return date;
+}
+console.log(nextDayDate());
+
+// 45. Написати программу, яка задає категорію та стаж працівника, а також ставку відповідно до категорії(1-ша категорія—3000, 2-га – 2000, 3-тя -- 1000). Обчислити заробітну плату, враховуючи надбавку за стаж роботи(до 2 років—0%, від 2 до 5 – 10%, від 5 до 10 – 20%, більше 10—30% ) і зняття податку – 15%.
+console.log('--------------------------\n№45:');
+
+function calculateSalary(catecory, experience) {
+  const salary = [,3000,2000,1000][catecory] * 0.85;
+  if(experience > 10) return salary *1.3;
+  if(experience > 5)  return salary *1.2;
+  if(experience > 2)  return salary *1.1;
+  return salary;
+}
+
+console.log(calculateSalary(3, 0));
+
+// 46. Написати програму, яка із введеного користувачем цілого чотирьохзначного числа (наприклад 5141):знаходить суму цифр цього числа (5141 це 5+1+4+1 = 11).перевіряє чи є однакові цифри (двічі зустрічається цифра 1)перевіряє чи сума двох перших цифр чотирьохзначного числа рівна двом наступним (5141 → 5+1 = 6 і 4+1 = 5 → суми першої та другої пар цифр даного числа різні)
+console.log('--------------------------\n№46:');
+
+function intFourDigitOtherOperations(num) {
+  console.log('сума цифр:', [...num.toString()].reduce( (s,e) => s + +e, 0) );
+  console.log('одинакові цифри:', [...new Set(num.toString())].length < 4 );
+  const sumFirstSecond = [...num.toString().slice(0,2)].reduce( (s,e) => s + +e, 0);
+  const sumThirdFourth = [...num.toString().slice(2,3)].reduce( (s,e) => s + +e, 0);
+  console.log('сума двох перших цифр рівна двом наступним:', sumFirstSecond === sumThirdFourth);
+
+}
+intFourDigitOtherOperations(5141);
+
+// 47. Написати програму, яка обчислює, скільки повинен заплатити водій за паркування автомобіля на стоянці протягом певного часу. Користувач вводить наступні дані: час заїзду на стоянку (у годинах і хвилинах), час від’їзду, вартість однієї години паркування. Водій платить за кожну повну годину. Також, здійснюється плата за перевищення користування стоянкою більше ніж на 10 хв., наприклад: якщо хтось використав стоянку протягом 2 год. і 15 хв., то повинен заплатити за 3 год. В кінцевому результаті на екран необхідно вивести повідомлення про час заїзду та виїзду авто, ціну за годину паркування і повну вартість.
+
+
+
+
 
 
 
