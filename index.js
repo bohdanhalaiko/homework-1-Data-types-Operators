@@ -251,6 +251,25 @@ console.log(checkTwoIntSameLastDigit(22,32));
 
 // 36. Write a Javascript program to check if the sequence of numbers 10, 20, 30 appears anywhere in a given array of integers. 
 
+function checkSequenceNumbers10_20_30(arr) {
+  return /102030/.test(arr.join``);
+}
+console.log(checkSequenceNumbers10_20_30([10,20,30,40,50,60]));
 
+// 37. Write a Javascript program to check two given integers and return 11 if either one is 11. Return their sum or difference if sum or difference is 11.
+
+function checkTwoInt11(int1, int2) {
+  if(int1 === 11 || int2 === 11)    return 11;
+  if(int1 + int2 === 11)            return Math.abs(int1 - int2);
+  if(Math.abs(int1 - int2) === 11)  return int1 + int2
+}
+console.log(checkTwoInt11(0,12));
+
+// 38. Write a Javascript program to check three given integers and return true if one of them is 20 or more less than one of the others. 
+
+function checkThreeGivenIntOneIs20MorelessOthers(...arg) {
+  return arg.filter( el => Math.min(...arg) >= el - 20 )
+}
+console.log(checkThreeGivenIntOneIs20MorelessOthers(10,29,60));
 
 
