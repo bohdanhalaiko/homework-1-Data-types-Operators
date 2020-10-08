@@ -2,6 +2,10 @@
 // 1. Write a Javascript program to get the Javascript version with patch number.
 console.log('--------------------------\n№1:');
 
+function getJsVersionAndPatch() {
+  console.log('Javascript Version: 2.4.2\nJavascript Patch Level: 198')
+}
+getJsVersionAndPatch()
 
 // 2. Write a Javascript program to display the current date and time.
 console.log('--------------------------\n№2:');
@@ -15,7 +19,6 @@ function currentDateAndTime() {
     .slice(0,-3)
     .replace(/\./g, `/`)
     .replace(`,`, ``)
-    .trim();
 }
 console.log(currentDateAndTime());
 
@@ -25,7 +28,7 @@ console.log('--------------------------\n№3:');
 function numCopiesOfString(str = '', num) {
   return [...Array(num)].map( (_, i) => str.toString().repeat(i+1)).join`\n`
 }
-console.log(numCopiesOfString('a',5));
+console.log(numCopiesOfString('ab',5));
 
 // 4. Write a Javascript program which accepts the radius of a circle from the user and compute the parameter and area.
 console.log('--------------------------\n№4:');
@@ -57,7 +60,7 @@ console.log('--------------------------\n№7:');
 function fileExtension(fileName) {
   return fileName.match(/\.[^\.]+$/g).pop();
 }
-console.log(fileExtension('test.rb'));
+console.log(fileExtension('te.st.rb'));
 
 // 8. Write a Javascript program to check three numbers and return true if one or more of them are small. A number is called "small" if it is in the range 1..10 inclusive. 
 console.log('--------------------------\n№8:');
@@ -97,7 +100,7 @@ console.log(addedIfToTheFront('if i have'));
 console.log('--------------------------\n№12:');
 
 function createNewStringUseFirstThreeCharAndRepeatN(str, n) {
-  return str.slice(0,2).repeat(n);
+  return str.slice(0,3).repeat(n);
 }
 console.log(createNewStringUseFirstThreeCharAndRepeatN('ab', 3));
 
@@ -206,10 +209,10 @@ printElementsArray(["Javascript", 2.3, 'Time.now']);
 // 25.  Write a Javascript program to check two non-negative integer values and return true if they have the same last digit. 
 console.log('--------------------------\n№25:');
 
-function checkTwoInt(int1, int2) {
-  return int1.toString().slice(-1) === int2.toString().slice(-1);
+function checkTwoIntSameLastDigit(int1, int2) {
+  return int1.toString().slice(-1) === int2.toString().slice(-1)
 }
-console.log(checkTwoInt(10,20));
+console.log(checkTwoIntSameLastDigit(22,32));
 
 // 26. Write a Javascript program to retrieve the total marks where the subject name and marks of a student stored in a hash. 
 console.log('--------------------------\n№26:');
@@ -260,7 +263,7 @@ console.log('--------------------------\n№31:');
 
 function checkTwoIntNearest10(int1, int2) {
   if (int1 === int2) return 0;
-  return Math.abs(int1 - 10) > Math.abs(int2 - 10) ? int2 : int1 ;
+  return Math.abs(int2 - 10) < Math.abs(int1 - 10) ? int2 : int1 ;
 }
 console.log(checkTwoIntNearest10(11,9));
 
@@ -282,6 +285,7 @@ function largerTwoPosIntRange20_30(int1, int2) {
   return Math.max(intRange1, intRange2)
 }
 console.log(largerTwoPosIntRange20_30(32,21));
+console.log(largerTwoPosIntRange20_30(32,31));
 
 // 34. Write a Javascript program to count the number of 5's in a given array.  
 console.log('--------------------------\n№34:');
@@ -293,11 +297,7 @@ console.log(countNumberOf5([1,2,3,4,5,6]));
 
 // 35. Write a Javascript program to check two non-negative integer values and return true if they have the same last digit. 
 console.log('--------------------------\n№35:');
-
-function checkTwoIntSameLastDigit(int1, int2) {
-  return int1.toString().slice(-1) === int2.toString().slice(-1)
-}
-console.log(checkTwoIntSameLastDigit(22,32));
+console.log('see task №25');
 
 // 36. Write a Javascript program to check if the sequence of numbers 10, 20, 30 appears anywhere in a given array of integers. 
 console.log('--------------------------\n№36:');
@@ -313,7 +313,7 @@ console.log('--------------------------\n№37:');
 function checkTwoInt11(int1, int2) {
   if(int1 === 11 || int2 === 11)    return 11;
   if(int1 + int2 === 11)            return Math.abs(int1 - int2);
-  if(Math.abs(int1 - int2) === 11)  return int1 + int2
+  if(Math.abs(int1 - int2) === 11)  return int1 + int2;
 }
 console.log(checkTwoInt11(0,12));
 
@@ -321,9 +321,9 @@ console.log(checkTwoInt11(0,12));
 console.log('--------------------------\n№38:');
 
 function checkThreeGivenIntOneIs20MorelessOthers(...arg) {
-  return arg.filter( el => el <= Math.min(...arg) + 20 ).length === 1;
+  return arg.filter( el => el >= Math.min(...arg) + 20 ).length >= 1;
 }
-console.log(checkThreeGivenIntOneIs20MorelessOthers(10,40,70));
+console.log(checkThreeGivenIntOneIs20MorelessOthers(10,20,30));
 
 // 39.  Write a Javascript program to check two given integers and return the larger value. However, if the two values have the same remainder when divided by 5 then return the smaller value and if the two values are the same, return 0
 console.log('--------------------------\n№39:');
@@ -338,10 +338,10 @@ console.log(checkTwoIntLargerAndSameRemainderSmaller(11,20));
 // 40. Write a Javascript program to check two given integers, each in the range 10..99, return true if there is a digit that appears in both numbers.
 console.log('--------------------------\n№40:');
 
-function digitAppearsBothNnumbers(...arg) {
-  return [...new Set(arg.join``)].length < 4;
+function digitAppearsBothNnumbers(x,y) {
+  return x.toString().split``.some(el => y.toString().includes(el) );
 }
-console.log(digitAppearsBothNnumbers(32,20));
+console.log(digitAppearsBothNnumbers(23,30));
 
 // 41. Write a Javascript program to check three given integers x, y, z and return true if one of y or z is close (differing from a by at most 1), while the other is far, differing from both other values by 3 or more. 
 console.log('--------------------------\n№41:');
@@ -419,10 +419,41 @@ function intFourDigitOtherOperations(num) {
 intFourDigitOtherOperations(5141);
 
 // 47. Написати програму, яка обчислює, скільки повинен заплатити водій за паркування автомобіля на стоянці протягом певного часу. Користувач вводить наступні дані: час заїзду на стоянку (у годинах і хвилинах), час від’їзду, вартість однієї години паркування. Водій платить за кожну повну годину. Також, здійснюється плата за перевищення користування стоянкою більше ніж на 10 хв., наприклад: якщо хтось використав стоянку протягом 2 год. і 15 хв., то повинен заплатити за 3 год. В кінцевому результаті на екран необхідно вивести повідомлення про час заїзду та виїзду авто, ціну за годину паркування і повну вартість.
+console.log('--------------------------\n№47:');
 
+class CalkPayDriverParking {
+  constructor(timeStart, timeFinish, costHour) {
+    this.timeStart = timeStart;
+    this.timeFinish = timeFinish;
+    this.costHour = costHour;
+  }
+  result() {
+    if(timeToNum(...this.timeStart) >= timeToNum(...this.timeFinish)) {
+      // throw new Error('Помилка введення');
+      return console.log('Неправильний час виїзду');
+    }
+    console.log('---------------------');
+    console.log('Інформація по оплаті:');
+    console.log('час заїзду:', timeToString(...this.timeStart));
+    console.log('час виїзду:', timeToString(...this.timeFinish));
+    console.log('вартість години:', this.costHour);
+    const timeInclud10Min = timeToNum(this.timeFinish[0], this.timeFinish[1] - 10);
+    const cost = Math.ceil( timeInclud10Min - timeToNum(...this.timeStart) );
+    console.log('до оплати:', (cost || 1) * this.costHour);
+    console.log('---------------------');
+  }
+}
+function timeToNum(hours, minutes) {
+  return hours + minutes / 60;
+}
+function timeToString(hours, minutes) {
+  return `${hours}:${minutes}`;
+}
 
-
-
-
-
+const parking1 = new CalkPayDriverParking([15,33],[15,34],20);
+parking1.result();
+const parking2 = new CalkPayDriverParking([15,33],[15,30],20);
+parking2.result();
+const parking3 = new CalkPayDriverParking([15,33],[15,40],20);
+parking3.result();
 
